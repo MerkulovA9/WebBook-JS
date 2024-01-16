@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Функции в JS</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <header> 
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Учебник WEB-программированию</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Учебник</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Разделы
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">HTML</a></li>
+                        <li><a class="dropdown-item" href="#">CSS</a></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+      <main class="main-container">
+        <h1>Функции в JavaScript</h1>
+        <p>Поговорим о функциях в JavaScript, сделаем их общий обзор и рассмотрим подробности о них, знание которых позволит вам эффективно ими пользоваться.</p>
+        <br>
+        <p>Функция — это самостоятельный блок кода, который можно, один раз объявив, вызывать столько раз, сколько нужно. Функция может, хотя это и необязательно, принимать параметры. Функции возвращают единственное значение.</p>
+        <br>
+       <p> Функции в JavaScript являются объектами, если точнее, то они являются объектами типа Function. Их ключевое отличие от обычных объектов, дающее им те исключительные возможности, которыми они обладают, заключается в том, что функции можно вызывать.</p>
+       <br>
+       <p>Кроме того, функции в JavaScript называют «функциями первого класса» так как их можно назначать переменным, их можно передавать другим функциям в качестве аргументов, их можно возвращать из других функций.</p>
+    <br>
+    <p>Сначала рассмотрим особенности работы с функциями и соответствующие синтаксические конструкции, которые существовали в языке до появления стандарта ES6 и актуальны до сих пор.
+    </p>
+    <br>
+    <p>Вот как выглядит объявление функции (function declaration).</p>
+    <pre><code class="javascript hljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span>(<span class="hljs-params">foo</span>) </span>{
+        &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+       }</code></pre>
+       <br>
+       
+В наши дни такие функции называют «обычными», отличая их от «стрелочных» функций, которые появились в ES6.
+<br>
+
+Функцию можно назначить переменной или константе. Такая конструкция называется функциональным выражением (function expression).
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">foo</span>) </span>{
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }</code></pre>
+   <br>
+   
+Можно заметить, что в вышеприведённом примере функция назначена константе, но сама она имени не имеет. Такие функции называют анонимными. Подобным функциям можно назначать имена. В таком случае речь идёт об именованном функциональном выражении (named function expression).
+<br>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomFn</span>(<span class="hljs-params">foo</span>) </span>{
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }</code></pre>
+   <br>
+   
+Использование таких выражений повышает удобство отладки (в сообщениях об ошибках, где проводится трассировка стека, видно имя функции). Имя функции в функциональном выражении может понадобиться и для того, чтобы функция могла бы сама себя вызывать, без чего не обойтись при реализации рекурсивных алгоритмов.
+<br>
+
+В стандарте ES6 появились стрелочные функции (arrow function), которые особенно удобно использовать в виде так называемых «встроенных функций» (inline function) — в роли аргументов, передаваемых другим функциям (коллбэков).
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function"><span class="hljs-params">foo</span> =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }</code></pre>
+   <br>
+   
+Стрелочные функции, помимо того, что структуры, используемые для их объявления, получаются более компактными, чем при использовании обычных функций, отличаются от них некоторыми важными особенностями, о которых мы поговорим ниже.
+<h2><font color="#3AC1EF">Параметры функций</font></h2>
+<br>
+
+Параметры представляют собой переменные, которые задаются на этапе объявления функции и будут содержать передаваемые ей значения (эти значения называют аргументами). Функции в JavaScript могут либо не иметь параметров, либо иметь один или несколько параметров.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">() =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }
+   <span class="hljs-keyword">const</span> doSomethingElse = <span class="hljs-function"><span class="hljs-params">foo</span> =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }
+   <span class="hljs-keyword">const</span> doSomethingElseAgain = <span class="hljs-function">(<span class="hljs-params">foo, bar</span>) =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }</code></pre>
+   <br>
+   
+Здесь показано несколько примеров стрелочных функций.
+<br>
+
+Начиная со стандарта ES6 у функций могут быть так называемые «параметры по умолчанию» (default parameters).
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">(<span class="hljs-params">foo = <span class="hljs-number">1</span>, bar = <span class="hljs-string">'hey'</span></span>) =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }</code></pre>
+   <br>
+   
+Они представляют собой стандартные значения, задаваемые параметрам функций в том случае, если при её вызове значения некоторых параметров не задаются. Например, функцию, показанную выше, можно вызвать как с передачей ей всех двух принимаемых ей параметров, так и другими способами.
+<pre><code class="javascript hljs">doSomething(<span class="hljs-number">3</span>)
+    doSomething()</code></pre>
+<br>
+
+Передаваемые функциям аргументы можно представлять в виде массивов. Для того чтобы разобрать эти аргументы можно воспользоваться оператором, который выглядит как три точки (это — так называемый «оператор расширения» или «оператор spread»). Вот как это выглядит.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">(<span class="hljs-params">foo = <span class="hljs-number">1</span>, bar = <span class="hljs-string">'hey'</span></span>) =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }
+   <span class="hljs-keyword">const</span> args = [<span class="hljs-number">2</span>, <span class="hljs-string">'ho!'</span>]
+   doSomething(...args)</code></pre>
+   
+Если функции нужно принимать много параметров, то запомнить порядок их следования может быть непросто. В таких случаях используются объекты с параметрами и возможности по деструктурированию объектов ES6.
+<br>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">(<span class="hljs-params">{ foo = <span class="hljs-number">1</span>, bar = <span class="hljs-string">'hey'</span> }</span>) =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+    &nbsp;<span class="hljs-built_in">console</span>.log(foo) <span class="hljs-comment">// 2</span>
+    &nbsp;<span class="hljs-built_in">console</span>.log(bar) <span class="hljs-comment">// 'ho!'</span>
+   }
+   <span class="hljs-keyword">const</span> args = { <span class="hljs-attr">foo</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">bar</span>: <span class="hljs-string">'ho!'</span> }
+   doSomething(args)</code></pre>
+   <br>
+   
+Этот приём позволяет, описывая параметры в виде свойств объекта и передавая функции объект, получить в функции доступ к параметрам по их именам без использования дополнительных конструкций. Подробнее об этом приёме можно почитать 
+<h2><font color="#3AC1EF">Значения, возвращаемые из функций</font></h2>
+
+Все функции возвращают некое значение. Если команда возврата явно не задана — функция возвратит <code>undefined</code>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">(<span class="hljs-params">foo = <span class="hljs-number">1</span>, bar = <span class="hljs-string">'hey'</span></span>) =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//сделать что-нибудь</span>
+   }
+   
+   <span class="hljs-built_in">console</span>.log(doSomething())</code></pre>
+   
+Выполнение функции завершается либо после того, как оказывается выполненным весь код, который она содержит, либо после того, как в коде встречается ключевое слово <code>return</code> . Когда в функции встречается это ключевое слово, её работа завершается, а управление передаётся в то место, откуда была вызвана функция.
+<br>
+
+Если после ключевого слова <code>return</code>  указать некое значение, то это значение возвращается в место вызова функции в качестве результата выполнения этой функции.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">() =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">return</span> <span class="hljs-string">'test'</span>
+   }
+   <span class="hljs-keyword">const</span> result = doSomething() <span class="hljs-comment">// result === 'test'</span></code></pre>
+   <br>
+   
+Из функции можно возвращать лишь одно значение. Для того чтобы получить возможность возврата нескольких значений, возвращать их можно либо в виде объекта, используя объектный литерал, либо в виде массива, а при вызове функции применять конструкцию деструктурирующего присваивания. Имена параметров при этом сохраняются. При этом, если нужно работать с объектом или массивом, возвращённым из функции, именно в виде объекта или массива, можно обойтись без деструктурирующего присваивания.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">() =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">return</span> [<span class="hljs-string">'Roger'</span>, <span class="hljs-number">6</span>]
+   }
+   
+   <span class="hljs-keyword">const</span> [ name, age ] = doSomething()
+   <span class="hljs-built_in">console</span>.log(name, age) <span class="hljs-comment">//Roger 6</span></code></pre>
+   <br>
+   
+Конструкцию <code>const [ name, age ] = doSomething()</code>  можно прочитать следующим образом: «объявить константы <code>name</code> и <code>age</code>  и присвоить им значения элементов массива, который возвратит функция». 
+Вот как то же самое выглядит с использованием объекта.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">() =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">return</span> {<span class="hljs-attr">name</span>: <span class="hljs-string">'Roger'</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">6</span>}
+   }
+   
+   <span class="hljs-keyword">const</span> { name, age } = doSomething()
+   <span class="hljs-built_in">console</span>.log(name, age) <span class="hljs-comment">//Roger 6</span></code></pre>
+   <br>
+   <h2><font color="#3AC1EF">Вложенные функции</font></h2>
+   <br>
+   
+Функции можно объявлять внутри других функций.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> doSomething = <span class="hljs-function">() =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">const</span> doSomethingElse = <span class="hljs-function">() =&gt;</span> {}
+    &nbsp;doSomethingElse()
+    &nbsp;<span class="hljs-keyword">return</span> <span class="hljs-string">'test'</span>
+   }
+   
+   doSomething()</code></pre>
+   <br>
+   
+Область видимости вложенной функции ограничена внешней по отношению к ней функцией, её нельзя вызвать извне.
+<br>
+<h2><font color="#3AC1EF">Методы объектов</font></h2>
+<br>
+
+Когда функции используются в качестве свойств объектов, такие функции называют методами объектов.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> car = {
+    &nbsp;<span class="hljs-attr">brand</span>: <span class="hljs-string">'Ford'</span>,
+    &nbsp;<span class="hljs-attr">model</span>: <span class="hljs-string">'Fiesta'</span>,
+    &nbsp;<span class="hljs-attr">start</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    &nbsp;&nbsp;&nbsp;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Started`</span>)
+    &nbsp;}
+   }
+   car.start()</code></pre>
+   <br>
+   <h2><font color="#3AC1EF">Ключевое слово this</font></h2>
+   <br>
+   
+Если сравнить стрелочные и обычные функции, используемые в качестве методов объектов, можно обнаружить их важное различие, заключающееся в смысле ключевого слова <code>this</code> . Рассмотрим пример.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> car = {
+    &nbsp;<span class="hljs-attr">brand</span>: <span class="hljs-string">'Ford'</span>,
+    &nbsp;<span class="hljs-attr">model</span>: <span class="hljs-string">'Fiesta'</span>,
+    &nbsp;<span class="hljs-attr">start</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    &nbsp;&nbsp;&nbsp;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Started <span class="hljs-subst">${<span class="hljs-built_in">this</span>.brand}</span> <span class="hljs-subst">${<span class="hljs-built_in">this</span>.model}</span>`</span>)
+    &nbsp;},
+    &nbsp;<span class="hljs-attr">stop</span>: <span class="hljs-function">() =&gt;</span> {
+    &nbsp;&nbsp;&nbsp;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Stopped <span class="hljs-subst">${<span class="hljs-built_in">this</span>.brand}</span> <span class="hljs-subst">${<span class="hljs-built_in">this</span>.model}</span>`</span>)
+    &nbsp;}
+   }
+   car.start() <span class="hljs-comment">//Started Ford Fiesta</span>
+   car.stop() <span class="hljs-comment">//Stopped undefined undefined</span></code></pre>
+   <br>
+   
+Как видно, вызов метода <code>start()
+    Как видно, вызов метода </code>  приводит ко вполне ожидаемому результату, а вот метод <code>stop()</code>  явно работает неправильно.
+    <br>
+    
+Происходит это из-за того, что ключевое слово <code>this</code>  по-разному ведёт себя при его использовании в стрелочных и обычных функциях. А именно, ключевое слово  в стрелочной функции содержит ссылку на контекст, включающий в себя функцию. В данном случае, если речь идёт о браузере, этим контекстом является объект  в стрелочной функции содержит ссылку на контекст, включающий в себя функцию. В данном случае, если речь идёт о браузере, этим контекстом является объект <code>window</code>.
+<br>
+<h2><font color="#3AC1EF">Немедленно вызываемые функциональные выражения</font></h2>
+<br>
+
+Немедленно вызываемое функциональное выражение (Immediately Invoked Function Expression, IIFE) — это функция, которая автоматически вызывается сразу после её объявления.
+<pre><code class="javascript hljs">;(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    &nbsp;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'executed'</span>)
+   })()</code></pre>
+   <br>
+   
+Точка с запятой перед IIFE необязательна, но её использование позволяет застраховаться от ошибок, связанных с автоматической расстановкой точек с запятой.
+<br>
+
+В вышеприведённом примере в консоль попадёт слово <code>executed</code> , после чего IIFE завершит работу. IIFE, точно так же как и другие функции, могут возвращать результаты своей работы.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> something = (<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    &nbsp;<span class="hljs-keyword">return</span> <span class="hljs-string">'IIFE'</span>
+   })()
+   
+   <span class="hljs-built_in">console</span>.log(something)</code></pre>
+   <br>
+   
+После выполнения этого простого примера в консоль попадёт строка <code>IIFE</code> , которая оказалась в константе <code>something</code>  после выполнения немедленно вызываемого функционального выражения. Может показаться, что особой пользы от такой конструкции нет. Однако если в IIFE выполняются некие сложные вычисления, которые нужно выполнить лишь однажды, после чего соответствующие механизмы оказываются ненужными — полезность IIFE оказывается очевидной. А именно, при таком подходе после выполнения IIFE в программе будет доступен лишь возвращённый функцией результат. Кроме того, можно вспомнить, что функции способны возвращать другие функции и объекты. Речь идёт о замыканиях, о них мы поговорим ниже.
+<br>
+<h2><font color="#3AC1EF">Поднятие функций</font></h2>
+<br>
+
+Перед выполнением JavaScript-кода производится его реорганизация. Мы уже говорили о механизме поднятия (hoisting) переменных, объявленных с использованием ключевого слова <code>var</code> . Похожий механизм действует и при работе с функциями. А именно, речь идёт о том, что объявления функций в ходе обработки кода перед его выполнением перемещаются в верхнюю часть их области видимости. В результате, например, оказывается, что вызвать функцию можно до её объявления.
+<pre><code class="javascript hljs">doSomething() <span class="hljs-comment">//did something</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doSomething</span>(<span class="hljs-params"></span>) </span>{
+     &nbsp;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'did something'</span>)
+    }</code></pre>
+    <br>
+    
+Если переместить вызов функции так, чтобы он шёл после её объявления, ничего не изменится.
+<br>
+
+Если же в похожей ситуации воспользоваться функциональным выражением, то похожий код выдаст ошибку.
+<pre><code class="javascript hljs">doSomething() <span class="hljs-comment">//TypeError</span>
+    <span class="hljs-keyword">var</span> doSomething = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+     &nbsp;<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'did something'</span>)
+    }</code></pre>
+    <br>
+    
+В данном случае оказывается, что хотя объявление переменной <code>doSomething</code>  и поднимается в верхнюю часть области видимости, это не относится к операции присваивания. 
+Если вместо <code>var</code>  в похожей ситуации использовать ключевые слова <code>let</code>  или <code>const</code> , такой код тоже работать не будет, правда, система выдаст другое сообщение об ошибке (<code>ReferenceError</code>  а не <code>TypeError</code> ), так как при использовании <code>let</code>  и <code>const</code>  объявления переменных и констант не поднимаются.
+<br>
+<h2><font color="#3AC1EF">Стрелочные функции</font></h2>
+<br>
+
+Сейчас мы подробнее поговорим о стрелочных функциях, с которыми мы уже встречались. Их можно считать одним из наиболее значительных новшеств стандарта ES6, они отличаются от обычных функций не только внешним видом, но и особенностями поведения. В наши дни они используются чрезвычайно широко. Пожалуй, нет ни одного современного проекта, где они не использовались бы в подавляющем большинстве случаев. Можно сказать, что их появление навсегда изменило и внешний вид JS-кода и особенности его работы.
+<br>
+
+С чисто внешней точки зрения синтаксис объявления стрелочных функций оказывается компактнее синтаксиса обычных функций. Вот объявление обычной функции.
+<br>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    &nbsp;<span class="hljs-comment">//...</span>
+   }</code></pre>
+   <br>
+   
+Вот объявление стрелочной функции, которое, в целом, если не учитывать особенности стрелочных функций, аналогично предыдущему.
+<br>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-function">() =&gt;</span> {
+    &nbsp;<span class="hljs-comment">//...</span>
+   }</code></pre>
+   <br>
+   
+Если тело стрелочной функции содержит лишь одну команду, результат которой возвращает эта функция, его можно записать без фигурных скобок и без ключевого слова <code>return</code> . Например, такая функция возвращает сумму переданных ей аргументов.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-function">(<span class="hljs-params">a,b</span>) =&gt;</span> a + b
+    <span class="hljs-built_in">console</span>.log(myFunction(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>)) <span class="hljs-comment">//3</span></code></pre>
+    <br>
+Как видите, параметры стрелочных функций, как и в случае с обычными функциями, описывают в скобках. При этом, если такая функция принимает всего один параметр, его можно указать без скобок. Например, вот функция, которая возвращает результат деления переданного ей числа на 2.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> a / <span class="hljs-number">2</span>
+    <span class="hljs-built_in">console</span>.log(myFunction(<span class="hljs-number">8</span>)) <span class="hljs-comment">//4</span></code></pre>
+    <br>
+    
+В результате оказывается, что стрелочные функции очень удобно использовать в ситуациях, в которых нужны маленькие функции.
+<br>
+<h3><font color="#3AC1EF">▍Неявный возврат результатов работы функции</font></h3>
+<br>
+
+Мы уже касались этой особенности стрелочных функций, но она настолько важна, что её следует обсудить подробнее. Речь идёт о том, что однострочные стрелочные функции поддерживают неявный возврат результатов своей работы. Пример возврата примитивного значения из однострочной стрелочной функции мы уже видели. Как быть, если такая функция должна возвратить объект? В таком случае фигурные скобки объектного литерала могут запутать систему, поэтому в теле функции используются круглые скобки.
+<br>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> myFunction = <span class="hljs-function">() =&gt;</span> ({<span class="hljs-attr">value</span>: <span class="hljs-string">'test'</span>})
+
+    <span class="hljs-keyword">const</span> obj = myFunction() 
+    <span class="hljs-built_in">console</span>.log(obj.value) <span class="hljs-comment">//test</span></code></pre>
+    <br>
+    <h3><font color="#3AC1EF">▍Ключевое слово this и стрелочные функции</font></h3>
+    <br>
+    
+Выше, когда мы рассматривали особенности ключевого слова <code>this</code> , мы сравнивали обычные и стрелочные функции. Этот раздел призван обратить ваше внимание на важность их различий. Ключевое слово <code>this</code> , само по себе, может вызывать определённые сложности, так как оно зависит и от контекста выполнения кода, и от того, включен или нет строгий режим (strict mode).
+<br>
+
+Как мы уже видели, при использовании ключевого слова <code>this</code>  в методе объекта, представленного обычной функцией,  <code>this</code>  указывает на объект, которому принадлежит метод. В таком случае говорят о привязке ключевого слова <code>this</code> к значению, представляющему собой контекст выполнения функции. В частности, если функция вызвана в виде метода объекта, то ключевое слово <code>this</code> привязано к этому объекту. 
+<br>
+В случае же со стрелочными функциями оказывается так, что в них привязка <code>this</code> не выполняется, они пользуются ключевым словом <code>this</code>  из содержащих их областей видимости. В результате их не рекомендуется использовать в качестве методов объектов.
+<br>
+
+Та же самая проблема возникает и при использовании функций в качестве обработчиков событий элементов DOM. Например, HTML-элемент <code>button</code> используют для описания кнопок. Событие <code>click</code>  вызывается при щелчке мышью по кнопке. Для того чтобы отреагировать на это событие в коде, нужно сначала получить ссылку на соответствующий элемент, а потом назначить ему обработчик события <code>click</code> в виде функции. В качестве такого обработчика можно использовать и обычную функцию, и стрелочную. Но, если в обработчике событий нужно обращаться к тому элементу, для которого оно вызвано (то есть — к <code>this</code>), стрелочная функция тут не подойдёт, так как доступное в ней значение <code>this</code> указывает на объект <code>window</code>. Для того чтобы проверить это на практике, создайте HTML-страницу, код которой показан ниже, и понажимайте на кнопки.
+<br>
+<pre><code class="javascript hljs">&lt;!DOCTYPE html&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+     &nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+     &nbsp;
+     &nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"fn"</span>&gt;</span>Function<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+     &nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"arrowFn"</span>&gt;</span>Arrow function<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    
+     &nbsp;&nbsp;&nbsp;<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">const</span> f = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"fn"</span>)
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="hljs-built_in">this</span> === f)
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+    
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword">const</span> af = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"arrowFn"</span>)
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;af.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function">() =&gt;</span> {
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="hljs-built_in">this</span> === <span class="hljs-built_in">window</span>)
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})
+     &nbsp;&nbsp;&nbsp;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+     &nbsp;<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></code></pre>
+    <br>
+    
+В данном случае при нажатии на эти кнопки будут появляться окна, содержащие <code>true</code> . Однако в обработчике события <code>click</code> кнопки с идентификатором <code>fn</code> проверяется равенство <code>this</code> самой кнопке, а в кнопке с идентификатором <code>arrowFn</code> проверяется равенство <code>this</code> и объекта <code>window</code>.
+<br>
+
+В результате, если в обработчике события HTML-элемента нужно обращаться к <code>this</code>, стрелочная функция для оформления такого обработчика не подойдёт.
+<br>
+<h2><font color="#3AC1EF">Замыкания</font></h2>
+<br>
+
+Замыкания — это важная концепция в JavaScript. Фактически, если вы писали JS-функции, то вы пользовались и замыканиями. Замыкания применяются в некоторых паттернах проектирования — в том случае, если нужно организовать строгий контроль доступа к неким данным или функциям.
+<br>
+
+Когда функция вызывается, у неё есть доступ ко всему тому, что находится во внешней по отношению к ней области видимости. Но к тому, что объявлено внутри функции, извне доступа нет. То есть, если в функции была объявлена некая переменная (или другая функция), они недоступны внешнему коду ни во время выполнения функции, ни после завершения её работы. Однако если из функции возвратить другую функцию, то эта новая функция будет иметь доступ ко всему тому, что было объявлено в исходной функции. При этом всё это будет скрыто от внешнего кода в замыкании.
+<br>
+
+Рассмотрим пример. Вот функция, которая принимает имя собаки, после чего выводит его в консоль.
+<br>
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> bark = <span class="hljs-function"><span class="hljs-params">dog</span> =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">const</span> say = <span class="hljs-string">`<span class="hljs-subst">${dog}</span> barked!`</span>
+    &nbsp;;(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(say))()
+   }
+   bark(<span class="hljs-string">`Roger`</span>) <span class="hljs-comment">// Roger barked!</span></code></pre>
+   <br>
+   
+Значение, возвращаемое этой функцией нас пока не интересует, текст выводится в консоль с помощью IIFE, что в данном случае особой роли не играет, однако, это поможет нам увидеть связь между этой функцией и её вариантом, в котором, вместо вызова функции, которая выводит текст в консоль, мы эту функцию из переписанной функции <code>bark()</code> возвратим. 
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> prepareBark = <span class="hljs-function"><span class="hljs-params">dog</span> =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">const</span> say = <span class="hljs-string">`<span class="hljs-subst">${dog}</span> barked!`</span>
+    &nbsp;<span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">console</span>.log(say)
+   }
+   <span class="hljs-keyword">const</span> bark = prepareBark(<span class="hljs-string">`Roger`</span>)
+   bark() <span class="hljs-comment">// Roger barked!</span></code></pre>
+   
+Результат работы код в двух случаях оказывается одинаковым. Но во втором случае то, что было передано исходной функции при её вызове (имя собаки, <code>Roger</code> ), хранится в замыкании, после чего используется другой функцией, возвращённой из исходной.
+<br>
+
+Проведём ещё один эксперимент — создадим, пользуясь исходной функцией, две новых, для разных собак.
+<pre><code class="javascript hljs"><span class="hljs-keyword">const</span> prepareBark = <span class="hljs-function"><span class="hljs-params">dog</span> =&gt;</span> {
+    &nbsp;<span class="hljs-keyword">const</span> say = <span class="hljs-string">`<span class="hljs-subst">${dog}</span> barked!`</span>
+    &nbsp;<span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+    &nbsp;&nbsp;&nbsp;<span class="hljs-built_in">console</span>.log(say)
+    &nbsp;}
+   }
+   <span class="hljs-keyword">const</span> rogerBark = prepareBark(<span class="hljs-string">`Roger`</span>)
+   <span class="hljs-keyword">const</span> sydBark = prepareBark(<span class="hljs-string">`Syd`</span>)
+   rogerBark()
+   sydBark()</code></pre>
+   <br>
+   
+Этот код выведет следующее.
+<br>
+<pre><code class="javascript hljs">Roger barked!
+    Syd barked!</code></pre>
+    <br>
+    
+Оказывается, что значение константы <code>say</code>  привязано к функции, которая возвращена из функции <code>prepareBark()</code>
+<br>
+
+Обратите внимание на то, что <code>say</code>, при повторном вызове <code>prepareBark()</code>, получает новое значение, при этом значение, записанное в <code>say</code> при первом вызове <code>prepareBark()</code>, не меняется. Речь идёт о том, что при каждом вызове этой функции создаётся новое замыкание.
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

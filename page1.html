@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Введение в JavaScript</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Учебник WEB-программированию</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Учебник</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Разделы
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">HTML</a></li>
+                    <li><a class="dropdown-item" href="#">CSS</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <main class="main-container">
+      <h1>Введение в JavaScript</h1>
+
+      <p>JavaScript – это язык программирования, который обеспечивает взаимодействие с веб-страницами. Он может использоваться для создания динамического содержимого, управления анимациями, обработки форм и др.</p>
+  
+      <h2>Примеры JavaScript кода</h2>
+  
+      <p>JavaScript код может быть встроен непосредственно в HTML страницу с помощью тега  Вот пример простого скрипта:</p>
+  
+    <img src="assets/Снимок экрана 2024-01-01 150408.png" alt="">
+  
+      <p>Данный код выведет сообщение "Привет, мир!" в консоль разработчика браузера. Это основной способ, которым JavaScript взаимодействует с окружающей средой.</p>
+  
+      <h2>Внешние файлы с JavaScript</h2>
+  
+      <p>JavaScript код также может быть размещен в отдельных файлах с расширением .js, которые затем подключаются к HTML с помощью атрибута src в теге Вот пример:</p>
+  <img src="assets/2.png" alt="">
+  
+      <p>Файл "script.js" содержит JavaScript код, который будет выполнен при загрузке страницы. Это позволяет разделять код JavaScript и HTML, что облегчает его поддержку и повторное использование.</p>
+  
+      <h2>Основные концепции JavaScript</h2>
+  
+      <p>JavaScript имеет множество функций и возможностей, но есть несколько основных концепций, с которыми полезно ознакомиться:</p>
+  
+      <ul>
+          <li><strong>Переменные и типы данных:</strong> переменные в JavaScript используются для хранения и манипуляции данными, а типы данных определяют вид информации, которую можно хранить в переменных.</li>
+          <li><strong>Операторы:</strong> операторы используются для выполнения различных операций, таких как арифметические вычисления, сравнения и логические операции.</li>
+          <li><strong>Функции:</strong> функции в JavaScript позволяют группировать повторяющийся код вместе, что делает его более организованным и повторно используемым.</li>
+          <li><strong>Условные выражения и циклы:</strong> условные выражения позволяют делать решения в зависимости от определенных условий, а циклы позволяют выполнять повторяющиеся действия.</li>
+      </ul>
+  
+      <p>Это лишь небольшая введение в JavaScript, но с этими базовыми концепциями можно начать понимать и использовать язык программирования JavaScript на практике.</p>
+    </main>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>
